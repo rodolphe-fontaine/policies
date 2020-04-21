@@ -24,7 +24,7 @@ spec:
         apiVersion: networking.k8s.io/v1
         kind: NetworkPolicy
         metadata:
-          name: all-from-backend-to-frontend
+          name: from-backend-to-frontend
         spec:
           ingress:
             - from:
