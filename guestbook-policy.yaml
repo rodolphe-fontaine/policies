@@ -1,0 +1,39 @@
+apiVersion: policy.mcm.ibm.com/v1alpha1
+kind: Policy
+metadata:
+  name: policy-nwp-guestbook
+  namespace: default
+  annotations:
+    policy.mcm.ibm.com/categories: ''
+    policy.mcm.ibm.com/controls: ''
+    policy.mcm.ibm.com/standards: ''
+    seed-generation: '1'
+  finalizers:
+    - propagator.finalizer.mcm.ibm.com
+spec:
+  complianceType: musthave
+  disabled: false
+  namespaces:
+    exclude:
+      - kube-*
+    include:
+      - default
+  object-templates:
+    - complianceType: musthave
+      objectDefinition:
+        apiVersion: networking.k8s.io/v1
+        kind: NetworkPolicy
+        metadata:
+          name: all-from-backend-to-frontend
+        spec:
+          ingress:
+            - from:
+                - podSelector:
+                    matchLabels:
+                      role: frontend
+              ports:
+                - port: 6379
+          podSelector:
+            matchLabels:
+              app: backend
+  remediationAction: inform
