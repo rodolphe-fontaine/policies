@@ -22,7 +22,7 @@ spec:
       default: eu-de
     - name: clusterNamespace
       description: The Kubernetes cluster namespace
-      default: team2
+      default: prod
   resourcetemplates:
     - apiVersion: v1
       kind: PersistentVolumeClaim
