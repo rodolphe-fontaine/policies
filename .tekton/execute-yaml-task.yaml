@@ -11,6 +11,8 @@ metadata:
     controller: true
     kind: Collection
     name: execute-yaml-task
+    uid: e8e34bb6-f67c-4fd5-a27c-82273761ce81
+  uid: 2f769c6b-80d7-11ea-b4fd-000c29d7a6c9`
 spec:
   inputs:
     params:
