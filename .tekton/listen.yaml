@@ -1,4 +1,4 @@
-apiVersion: tekton.dev/v1alpha1
+apiVersion: triggers.tektondev/v1alpha1
 kind: TriggerTemplate
 metadata:
   name: template
