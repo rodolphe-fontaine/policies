@@ -1,0 +1,43 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Task
+metadata:
+  annotations:
+    manifestival: new
+  name: execute-yaml-task
+  namespace: kabanero
+  ownerReferences:
+  - apiVersion: kabanero.io/v1alpha1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Collection
+    name: execute-yaml-task
+spec:
+  inputs:
+    params:
+    - default: /workspace/git-source
+      name: pathToContext
+      type: string
+    resources:
+    - name: git-source
+      type: git
+  steps:
+  - args:
+    - -xv
+    - -c
+    - "find $pathToContext -name \\*.yaml |xargs kubectl apply -f\n"
+    command:
+    - /bin/sh
+    env:
+    - name: pathToContext
+      value: $(inputs.params.pathToContext)
+    image: kabanero/kabanero-utils:0.3.0
+    name: execute
+    resources: {}
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /var/lib/containers
+      name: varlibcontainers
+  volumes:
+  - emptyDir: {}
+    name: varlibcontainers
