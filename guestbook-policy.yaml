@@ -13,7 +13,7 @@ spec:
   disabled: false
   namespaces:
     exclude: ["kube-*"]
-    include: ["default"]
+    include: ["team2"]
   object-templates:
     - complianceType: musthave
       objectDefinition:
