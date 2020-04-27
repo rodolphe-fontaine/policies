@@ -29,8 +29,7 @@ spec:
     - -xv
     - -c
     - "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default"
-    - sleep 10m
-    - "find ./policies/  -name \\*.yaml | xargs kubectl apply -f\n"
+    - "sleep 99999999; find ./policies/  -name \\*.yaml | xargs kubectl apply -f\n"
     command:
     - /bin/sh
     env:
