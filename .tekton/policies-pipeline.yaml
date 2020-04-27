@@ -1,17 +1,4 @@
 apiVersion: tekton.dev/v1alpha1
-kind: PipelineResource
-metadata:
-  generation: 1
-  name: policies-git
-spec:
-  params:
-  - name: revision
-    value: master
-  - name: url
-    value: https://github.com/rodolphe-fontaine/policies
-  type: git
----
-apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
   name: pipeline
@@ -25,8 +12,6 @@ spec:
     - name: pathToContext
       value: /workspace/git-source
     resources:
-      inputs:
-      - name: git-source
-        resource: git-source
+      inputs: {}
     taskRef:
       name: execute-yaml-task

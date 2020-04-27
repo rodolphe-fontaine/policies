@@ -12,14 +12,25 @@ spec:
     - default: /workspace/git-source
       name: pathToContext
       type: string
-    resources:
-    - name: git-source
-      type: git
+    resources: {}
   steps:
+  - name: clone-repo
+    image: alpine/git
+    env:
+      - name: REPOSITORY
+        value: https://github.com/rodolphe-fontaine/policies
+      - name: REVISION
+        value: master
+    command: ["/bin/sh", "-c"]
+    args:
+      - set -e -o pipefail;
+        cd $pathToContext
+        echo "Cloning $REPOSITORY";
+        git clone -q -b $REVISION $REPOSITORY .;
   - args:
     - -xv
     - -c
-    - "find $pathToContext -name \\*.yaml |xargs kubectl apply -f\n"
+    - "find /workspace/git-source/policies/  -name \\*.yaml | xargs kubectl apply -f\n"
     command:
     - /bin/sh
     env:
