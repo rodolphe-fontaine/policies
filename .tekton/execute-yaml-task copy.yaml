@@ -3,7 +3,7 @@ kind: Task
 metadata:
   annotations:
     manifestival: new
-  name: execute-yaml-task
+  name: execute-yaml-task-2
   namespace: default
   uid: 2f769c6b-80d7-11ea-b4fd-000c29d7a6c9`
 spec:
@@ -25,20 +25,18 @@ spec:
     args:
       - set -e -o pipefail;
         git clone -q -b $REVISION $REPOSITORY .;
-  - args:
-    - -xv
-    - -c
-    - "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default"
-    - echo "Begin Create Policies"
-    - "sleep 999999;  find ./policies/*  -name \\*.yaml | xargs kubectl apply -f\n"
-    - echo "End Create Policy"
-    command:
-    - /bin/sh
+  - name: exec-kubectl
+    image: rfontain/kabanero-utils:demo
     env:
     - name: pathToContext
       value: $(inputs.params.pathToContext)
-    image: rfontain/kabanero-utils:demo
-    name: execute
+    command: ["/bin/bash", "-c"]
+    args:
+    - set -e -o pipefail;
+     "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default";
+     echo "Begin Create Policies";
+     "sleep 999999;  find ./policies/*  -name \\*.yaml | xargs kubectl apply -f\n";
+     echo "End Create Policy";
     resources: {}
     securityContext:
       privileged: false
