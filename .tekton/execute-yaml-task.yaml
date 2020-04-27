@@ -28,8 +28,8 @@ spec:
   - args:
     - -xv
     - -c
-    - "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP"
-    - "find /workspace/git-source/policies/  -name \\*.yaml | xargs kubectl apply -f\n"
+    - "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default"
+    - "find ./policies/  -name \\*.yaml | xargs kubectl apply -f\n"
     command:
     - /bin/sh
     env:
