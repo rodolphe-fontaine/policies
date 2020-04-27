@@ -32,11 +32,13 @@ spec:
       value: $(inputs.params.pathToContext)
     command: ["/bin/sh", "-c"]
     args:
-    - set -e -o pipefail;
-     "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default";
-     echo "Begin Create Policies";
-     "find ./policies/*  -name \\*.yaml | xargs kubectl apply -f\n";
-     echo "End Create Policy";
+      - c
+      - xv
+      - set -e -o pipefail;
+        "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default";
+       echo "Begin Create Policies";
+       "find ./policies/*  -name \\*.yaml | xargs kubectl apply -f\n";
+       echo "End Create Policy";
     resources: {}
     securityContext:
       privileged: false
