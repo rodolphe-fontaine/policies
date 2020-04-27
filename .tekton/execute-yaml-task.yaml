@@ -4,7 +4,7 @@ metadata:
   annotations:
     manifestival: new
   name: execute-yaml-task
-  namespace: kabanero
+  namespace: default
   uid: 2f769c6b-80d7-11ea-b4fd-000c29d7a6c9`
 spec:
   inputs:

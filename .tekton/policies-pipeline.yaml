@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: Pipeline
 metadata:
   name: create-policies-fromgit
-  namespace: kabanero
+  namespace: default
 spec:
   resources:
   - name: git-source

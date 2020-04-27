@@ -3,7 +3,7 @@ kind: PipelineResource
 metadata:
   generation: 1
   name: policies-git
-  namespace: kabanero
+  namespace: default
 spec:
   params:
   - name: revision
