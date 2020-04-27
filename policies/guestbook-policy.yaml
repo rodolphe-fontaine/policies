@@ -55,7 +55,6 @@ apiVersion: mcm.ibm.com/v1alpha1
 kind: PlacementBinding
 metadata:
   name: binding-policy-networkpolicy-gb
-  namespace: default
 placementRef:
   name: placement-policy-networkpolicy-gb
   kind: PlacementPolicy
@@ -69,7 +68,6 @@ apiVersion: mcm.ibm.com/v1alpha1
 kind: PlacementPolicy
 metadata:
   name: placement-policy-networkpolicy-gb
-  namespace: default
 spec:
   clusterLabels:
     matchExpressions:
