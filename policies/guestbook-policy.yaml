@@ -2,7 +2,6 @@ apiVersion: policy.mcm.ibm.com/v1alpha1
 kind: Policy
 metadata:
   name: policy-networkpolicy-gb
-  namespace: default
   annotations:
     policy.mcm.ibm.com/standards: 
     policy.mcm.ibm.com/categories: 
