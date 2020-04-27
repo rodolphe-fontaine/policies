@@ -25,7 +25,6 @@ spec:
     args:
       - set -e -o pipefail;
         cd $pathToContext
-        echo "Cloning $REPOSITORY";
         git clone -q -b $REVISION $REPOSITORY .;
   - args:
     - -xv
