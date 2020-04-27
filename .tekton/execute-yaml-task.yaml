@@ -25,7 +25,7 @@ spec:
     args:
       - set -e -o pipefail;
         git clone -q -b $REVISION $REPOSITORY .;
-    args:
+  - args:
     - -xv
     - -c
     - "cloudctl login -a https://icp-console.mcm113-8a2d3071712c7c965e5501bbbe7f8585-0001.par01.containers.appdomain.cloud --skip-ssl-validation -u admin -p 9xMmyVfibDbncDyMExzCKWEExRdCbZjP -n default"
