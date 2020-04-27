@@ -9,7 +9,7 @@ metadata:
 spec:
   inputs:
     params:
-    - default: /workspace/git-source
+    - default: "/workspace/git-source"
       name: pathToContext
       type: string
     resources: {}
@@ -18,7 +18,7 @@ spec:
     image: alpine/git
     env:
       - name: REPOSITORY
-        value: https://github.com/rodolphe-fontaine/policies
+        value: "https://github.com/rodolphe-fontaine/policies"
       - name: REVISION
         value: master
     command: ["/bin/sh", "-c"]
