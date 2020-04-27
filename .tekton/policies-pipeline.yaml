@@ -3,9 +3,7 @@ kind: Pipeline
 metadata:
   name: pipeline
 spec:
-  resources:
-  - name: git-source
-    type: git
+  resources: {}
   tasks:
   - name: create-policy
     params:
